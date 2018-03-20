@@ -5,6 +5,6 @@ Background:
 
 Scenario: Health check for a given path. (aka baseUrl)
 
-Given path /
+Given path '/'
 When method get
 Then status 200
