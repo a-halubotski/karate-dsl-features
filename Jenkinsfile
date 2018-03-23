@@ -10,7 +10,7 @@ pipeline {
                     image 'docker.teqniksoft.com:5000/karate-dsl-ci:latest'
                     label 'karate-dsl-ci-test' // to environment
                     reuseNode true
-                    args '--env-file=dev.env -v $(pwd)/features:/var/app/karate/src/test/java/features'
+                    args '--env-file=$(pwd)/dev.env -v $(pwd)/features:/var/app/karate/src/test/java/features'
                 }
             }
 
