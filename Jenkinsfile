@@ -38,10 +38,15 @@ pipeline {
     }
     post {
         always {
-            if(env.DOCKER_LOGS_DEBUG && Boolean.valueOf(env.DOCKER_LOGS_DEBUG)) {
-                sh "docker logs ${CID}"
+            script {
+                if(env.DOCKER_LOGS_DEBUG && Boolean.valueOf(env.DOCKER_LOGS_DEBUG)) {
+                    sh "docker logs ${CID}"
+                }
+                sh "docker rm -f ${CID}"
             }
-            sh "docker rm -f ${CID}"
+        }
+        success {
+            archive includes: "target/surefire-reports/*"
         }
     }
 
