@@ -32,7 +32,7 @@ pipeline {
         }
         stage('Variable') {
             steps {
-                echo DOCKER_LOGS_DEBUG
+//                echo DOCKER_LOGS_DEBUG
                 echo env.DOCKER_LOGS_DEBUG
             }
         }
