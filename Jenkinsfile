@@ -1,3 +1,8 @@
+#!groovy
+
+// usage:
+// DOCKER_LOGS_DEBUG = false/true - print tests output to console log
+
 pipeline {
     agent {
         label 'master'
@@ -30,11 +35,14 @@ pipeline {
                 ])
             }
         }
-        stage('Variable') {
-            steps {
-//                echo DOCKER_LOGS_DEBUG
-                echo env.DOCKER_LOGS_DEBUG
+    }
+    post {
+        always {
+            if(env.DOCKER_LOGS_DEBUG && Boolean.valueOf(env.DOCKER_LOGS_DEBUG)) {
+                sh "docker logs ${CID}"
             }
+            sh "docker rm -f ${CID}"
         }
     }
+
 }
