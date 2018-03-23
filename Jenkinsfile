@@ -30,5 +30,9 @@ pipeline {
                 ])
             }
         }
+        stage('Variable') {
+            echo DOCKER_LOGS_DEBUG
+            echo env.DOCKER_LOGS_DEBUG
+        }
     }
 }
