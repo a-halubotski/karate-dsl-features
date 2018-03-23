@@ -13,6 +13,10 @@ pipeline {
                     args '--env-file=dev.env -v $(pwd)/features:/var/app/karate/src/test/java/features'
                 }
             }
+
+            steps {
+                echo 'Do something here'
+            }
 /*
             script {
                 docker.withRegistry('https://docker.teqniksoft.com:5000') {
